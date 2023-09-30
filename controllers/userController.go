@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"tiketAPI/helpers"
 	"tiketAPI/models"
 	"tiketAPI/services"
 
@@ -16,7 +17,17 @@ func Login(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
-	return c.JSON(http.StatusOK, result)
+
+	// Generate token
+	token, err := helpers.GenerateToken(result.(models.User).ID)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	// Return token
+	return c.JSON(http.StatusOK, map[string]string{
+		"token": token,
+	})
 }
 
 func Register(c echo.Context) error {

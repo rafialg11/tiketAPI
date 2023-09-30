@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/dgrijalva/jwt-go"
@@ -24,9 +25,9 @@ func JwtMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, echo.NewHTTPError(http.StatusBadRequest, "Invalid token")
 			}
-
+			secretKey := os.Getenv("SECRET_KEY")
 			// Return secret key
-			return []byte("your-secret-key"), nil
+			return []byte(secretKey), nil
 		})
 
 		if err != nil {
