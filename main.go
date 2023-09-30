@@ -21,7 +21,7 @@ func main() {
 
 	// Call eventRoutes and use that here
 	e := echo.New()
-	routes.EventRoutes(e)
+	routes.Routes(e)
 
 	PORT := os.Getenv("PORT")
 	e.Logger.Fatal(e.Start(PORT))
