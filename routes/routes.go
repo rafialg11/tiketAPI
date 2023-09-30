@@ -9,8 +9,9 @@ import (
 
 func Routes(e *echo.Echo) {
 	// Public routes
-	e.POST("/login", controllers.Login)
-	e.POST("/register", controllers.Register)
+	u := e.Group("/users")
+	u.POST("/login", controllers.Login)
+	u.POST("/register", controllers.Register)
 
 	g := e.Group("/api")
 	g.Use(middleware.JwtMiddleware)
