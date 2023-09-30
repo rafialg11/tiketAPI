@@ -24,6 +24,7 @@ func InitDB() {
 		panic(err)
 	}
 	DB.AutoMigrate(&models.Event{})
+	DB.AutoMigrate(&models.User{})
 
 	// Log the DSN string and the database connection status
 	fmt.Printf("DSN: %s\n", dsn)
