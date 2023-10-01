@@ -8,13 +8,6 @@ import (
 )
 
 func Routes(e *echo.Echo) {
-	// Buat middleware CORS
-    	corsHandler := middleware.CORSWithConfig(middleware.CORSConfig{				
-		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE"},
-    	})
-
-   	e.Use(corsHandler)
-	
 	// Public routes
 	e.POST("/login", controllers.Login)
 	e.POST("/register", controllers.Register)
