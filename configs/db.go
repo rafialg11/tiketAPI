@@ -12,7 +12,7 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
-	dsn := fmt.Sprintf("mysql://%s:%s@%s:%d/%s",
+	dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v",
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASSWORD"),
 		os.Getenv("DB_HOST"),
