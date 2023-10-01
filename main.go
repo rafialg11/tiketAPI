@@ -24,5 +24,5 @@ func main() {
 	routes.Routes(e)
 
 	PORT := os.Getenv("PORT")
-	e.Logger.Fatal(e.Start(PORT))
+	e.Logger.Fatal(e.Start(":"+PORT))
 }
