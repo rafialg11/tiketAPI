@@ -1,13 +1,13 @@
 package main
 
 import (
-	"log"
+	// "log"
 	"os"
 
 	"tiketAPI/configs"
 	"tiketAPI/routes"
 
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 )
 
